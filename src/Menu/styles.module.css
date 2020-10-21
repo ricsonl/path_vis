@@ -1,0 +1,19 @@
+.DrawContainer{
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: space-evenly;
+}
+.Button{
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: var(--light-grey);
+  font-size: 16px;
+  margin: 1px;
+  padding: 7px;
+}
+.Active{
+  background-color: var(--purple);
+}

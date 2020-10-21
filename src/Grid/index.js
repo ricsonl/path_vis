@@ -1,36 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import styles from './styles.module.css';
+import React from 'react';
 
 import Cell from '../Cell';
 
-const Grid = () => {
+import styles from './styles.module.css';
+import PropTypes from 'prop-types';
 
-  const [cells, setCells] = useState([]);
 
-  useEffect(() => {
-    const _cells = [];
-    for (let i = 0; i < 22; i++) {
-      const row = [];
-      for (let j = 0; j < 44; j++) {
-        row.push('var(--grey)');
-      }
-      _cells.push(row);
-    }
-    _cells[15][1] = "red";
-    setCells(_cells);
-  });
-
+const Grid = (props) => {
   return (
     <div className={styles.Grid}>
       {
-        cells.map((row) => {
-          return <div className={styles.Row}>
-            { row.map((color => <Cell fill={color}/>)) }
+        props.cells.map((row, rowIdx) => {
+          return <div key={rowIdx} className={styles.Row}>
+            { row.map((color, cellIdx) => <Cell key={cellIdx} fill={color}/>) }
           </div>
         })
       }
     </div>
   );
+};
+
+Grid.propTypes = {
+  cells: PropTypes.array.isRequired,
 };
 
 export default Grid;
