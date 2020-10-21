@@ -23,6 +23,27 @@ class App extends Component {
     this.setState({ cells });
   }
 
+  cellClicked = (i, j) => {
+    let _cells = [...this.state.cells];
+    let color;
+    switch(this.state.draw){
+      case 'orig':
+        color = 'var(--blue)';
+        break;
+      case 'dest':
+        color = 'var(--purple)';
+        break;
+      case 'obst':
+        color = 'var(--black)';
+        break;
+      default:
+        color = 'var(--grey)';
+        break;
+    }
+    _cells[i][j] = color;
+    this.setState({cells: _cells});
+  }
+
   setDraw = (draw) => {
     (this.state.draw === draw) ?
     this.setState({ draw: '' }) :
@@ -32,7 +53,7 @@ class App extends Component {
   render() {
     return (
       <div className={styles.AppContainer}>
-        <Grid cells={this.state.cells} />
+        <Grid cells={this.state.cells} draw={this.state.draw} cellClicked={this.cellClicked}/>
         <Menu set={this.setDraw} active={this.state.draw}/>
       </div>
     );

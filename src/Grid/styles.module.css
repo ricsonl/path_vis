@@ -4,3 +4,6 @@
 .Row{
   display: flex;
 }
+.DrawCursor{
+  cursor: url('../assets/create.svg') 0 24, pointer;
+}
