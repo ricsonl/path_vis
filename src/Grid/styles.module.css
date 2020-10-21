@@ -1,0 +1,7 @@
+.Grid{
+  margin: 0 auto;
+  width: fit-content;
+}
+.Row{
+  display: flex;
+}
